@@ -382,7 +382,7 @@ python bilibili_search.py "宫保鸡丁"
 # --- AI / API (MiniMax, OpenAI-compatible) ---
 AI_BASE_URL = "https://api.minimaxi.com/v1"
 AI_API_KEY = "sk-cp-你的APIKey"
-AI_MODEL = "MiniMax-M2.1"  # 推荐，性价比高
+AI_MODEL = "MiniMax-M2.7"  # 推荐，性价比高
 ```
 
 ### 4.4 `ai_selector.py` 核心逻辑
@@ -655,7 +655,7 @@ python "D:/Softwares/每次菜谱/daily_runner.py"
 |------|------|------|
 | `ImportError: No module named 'requests'` | 缺少依赖 | `pip install requests` |
 | B站 API 返回 412 | 缺少 cookie | Session 自动处理，检查代理 |
-| MiniMax 返回 2061 | 模型名不对或 plan 不支持 | 用 `MiniMax-M2.1` |
+| MiniMax 返回 2061 | 模型名不对或 plan 不支持 | 用 `MiniMax-M2.7` |
 | MiniMax 返回 `sk-` 开头错误 | API key 无效 | 检查 key 是否过期 |
 | 飞书推送无反应 | webhook URL 不对 | 重新复制 webhook 地址 |
 | 终端中文乱码 | Windows GBK 编码 | 不影响功能，数据正确 |

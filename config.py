@@ -13,7 +13,7 @@ STATE_FILE = BASE_DIR / "state.json"
 # MiniMax API: https://platform.minimaxi.com/user-center/payment/token-plan
 AI_BASE_URL = os.environ.get("RECIPE_AI_URL", "https://api.minimaxi.com/v1")
 AI_API_KEY = os.environ.get("RECIPE_AI_KEY", "")  # 设置环境变量或在这里填写MiniMax API Key
-AI_MODEL = os.environ.get("RECIPE_AI_MODEL", "MiniMax-M2.1")
+AI_MODEL = os.environ.get("RECIPE_AI_MODEL", "MiniMax-M2.7")
 
 # --- 飞书 / WeChat Push ---
 # 推荐 feishu (飞书群机器人, 最简单, 永久免费)
