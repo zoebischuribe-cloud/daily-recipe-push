@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>今日菜谱</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #fff; color: #333; max-width: 600px; margin:0 auto; }
+  .video-wrap { position:relative; padding-bottom:56.25%; height:0; background:#000; }
+  .video-wrap iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; }
+  .no-video { padding:60px 20px; text-align:center; color:#999; background:#f5f5f5; }
+  .no-video .icon { font-size:48px; margin-bottom:12px; }
+  .content { padding:20px 16px 40px; }
+  h1 { font-size:24px; margin-bottom:8px; color:#e74c3c; }
+  .meta { display:flex; gap:12px; margin-bottom:20px; font-size:14px; color:#888; flex-wrap:wrap; }
+  .meta span { background:#f0f0f0; padding:4px 10px; border-radius:12px; }
+  .section { margin-bottom:20px; }
+  .section h3 { font-size:16px; color:#e74c3c; margin-bottom:10px; padding-left:6px; border-left:3px solid #e74c3c; }
+  .reason { background:#fff8e1; padding:14px 16px; border-radius:10px; font-size:15px; line-height:1.6; }
+  .tip { background:#e8f5e9; padding:14px 16px; border-radius:10px; font-size:14px; margin-bottom:20px; }
+  .ingredients { display:flex; flex-wrap:wrap; gap:8px; }
+  .ingredient { background:#f8f8f8; padding:6px 14px; border-radius:16px; font-size:14px; }
+  .steps { list-style:none; counter-reset:step; }
+  .steps li { counter-increment:step; padding:10px 0 10px 34px; position:relative; font-size:15px; line-height:1.6; border-bottom:1px solid #f0f0f0; }
+  .steps li::before { content:counter(step); position:absolute; left:0; top:10px; width:22px; height:22px; background:#e74c3c; color:#fff; border-radius:50%; text-align:center; font-size:12px; line-height:22px; }
+  .footer { text-align:center; padding:20px; color:#aaa; font-size:12px; }
+  .footer a { color:#e74c3c; text-decoration:none; }
+</style>
+</head>
+<body>
+
+<div class="video-wrap">
+  <iframe id="player" src="" scrolling="no" allowfullscreen="true"></iframe>
+</div>
+<div class="no-video" id="noVideo" style="display:none">
+  <div class="icon">📺</div>
+  <p>视频加载中，请稍候...</p>
+</div>
+
+<div class="content">
+  <h1 id="dishName">加载中...</h1>
+  <div class="meta">
+    <span id="category">--</span>
+    <span id="difficulty">--</span>
+    <span id="author">--</span>
+  </div>
+
+  <div class="reason" id="reason" style="display:none"></div>
+
+  <div class="tip" id="tip" style="display:none"></div>
+
+  <div class="section" id="ingredientsSection" style="display:none">
+    <h3>🧂 食材</h3>
+    <div class="ingredients" id="ingredients"></div>
+  </div>
+
+  <div class="section" id="stepsSection" style="display:none">
+    <h3>📝 步骤</h3>
+    <ol class="steps" id="steps"></ol>
+  </div>
+</div>
+
+<div class="footer">
+  每日菜谱 · AI 精选 · <a href="#" id="bilibiliLink">在B站打开</a>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const dish = params.get('dish') || '今日推荐';
+const bvid = params.get('bvid') || '';
+
+document.getElementById('dishName').textContent = '🍳 ' + dish;
+
+if (bvid) {
+  document.getElementById('player').src = '//player.bilibili.com/player.html?bvid=' + bvid + '&autoplay=0&high_quality=1';
+  document.getElementById('bilibiliLink').href = 'https://www.bilibili.com/video/' + bvid;
+} else {
+  document.getElementById('player').style.display = 'none';
+  document.getElementById('noVideo').style.display = 'block';
+}
+
+// Load recipe data
+fetch('/api/recipe?dish=' + encodeURIComponent(dish))
+  .then(r => r.json())
+  .then(data => {
+    if (data.category) {
+      document.getElementById('category').textContent = data.category;
+      document.getElementById('difficulty').textContent = '★'.repeat(data.difficulty || 0) + '☆'.repeat(5 - (data.difficulty || 0));
+    }
+    if (data.author) document.getElementById('author').textContent = 'UP: ' + data.author;
+
+    if (data.reason) { document.getElementById('reason').textContent = data.reason; document.getElementById('reason').style.display = 'block'; }
+    if (data.tip) { document.getElementById('tip').textContent = '💡 ' + data.tip; document.getElementById('tip').style.display = 'block'; }
+
+    if (data.ingredients && data.ingredients.length) {
+      document.getElementById('ingredientsSection').style.display = 'block';
+      document.getElementById('ingredients').innerHTML = data.ingredients.map(i => '<span class="ingredient">' + i + '</span>').join('');
+    }
+
+    if (data.steps && data.steps.length) {
+      document.getElementById('stepsSection').style.display = 'block';
+      document.getElementById('steps').innerHTML = data.steps.map(s => '<li>' + s + '</li>').join('');
+    }
+  })
+  .catch(() => {
+    document.getElementById('category').textContent = '家常菜';
+    document.getElementById('difficulty').textContent = '★★★☆☆';
+  });
+</script>
+</body>
+</html>

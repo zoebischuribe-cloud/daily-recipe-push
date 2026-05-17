@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Sensitive data
+.env
+*.token
+
+# HowToCook repo (source data, not our code)
+HowToCook_repo/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

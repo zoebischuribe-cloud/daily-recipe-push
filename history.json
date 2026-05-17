@@ -1,0 +1,69 @@
+[
+  {
+    "date": "2026-05-17",
+    "weekday": "Sunday",
+    "dish": "意式烤鸡",
+    "category": "荤菜",
+    "difficulty": 3,
+    "reason": "今天为你挑选了荤菜里的经典家常菜——意式烤鸡！",
+    "tip": "用心做，味道一定好！"
+  },
+  {
+    "date": "2026-05-17",
+    "weekday": "Sunday",
+    "dish": "烤茄子",
+    "category": "素菜",
+    "difficulty": 3,
+    "reason": "今天为你挑选了素菜里的经典家常菜——烤茄子！",
+    "tip": "用心做，味道一定好！"
+  },
+  {
+    "date": "2026-05-17",
+    "weekday": "Sunday",
+    "dish": "河南蒸面条",
+    "category": "主食",
+    "difficulty": 4,
+    "reason": "今天为你挑选了主食里的经典家常菜——河南蒸面条！",
+    "tip": "用心做，味道一定好！"
+  },
+  {
+    "date": "2026-05-17",
+    "weekday": "Sunday",
+    "dish": "小炒藕丁",
+    "category": "素菜",
+    "difficulty": 3,
+    "reason": "春天的周末了来道硬菜——小炒藕丁，正好适合今天！",
+    "tip": "用心做好每一餐，家人一定吃得开心！",
+    "pairing": ""
+  },
+  {
+    "date": "2026-05-17",
+    "weekday": "Sunday",
+    "dish": "可乐炒饭",
+    "category": "主食",
+    "difficulty": 3,
+    "reason": "春天的周末了来道硬菜——可乐炒饭，正好适合今天！",
+    "tip": "用心做好每一餐，家人一定吃得开心！",
+    "pairing": ""
+  },
+  {
+    "date": "2026-05-17",
+    "weekday": "Sunday",
+    "dish": "清蒸鲈鱼",
+    "category": "水产",
+    "difficulty": 3,
+    "reason": "周末来做条大鱼！鲈鱼鲜嫩最适合清蒸，春季吃它最是清淡养肝，符合时节",
+    "tip": "蒸锅水开后再放鱼，大火蒸8分钟肉质最嫩",
+    "pairing": "凉拌木耳"
+  },
+  {
+    "date": "2026-05-17",
+    "weekday": "Sunday",
+    "dish": "罗宋汤",
+    "category": "汤羹",
+    "difficulty": 4,
+    "reason": "春天的周末了来道硬菜——罗宋汤，正好适合今天！",
+    "tip": "用心做好每一餐，家人一定吃得开心！",
+    "pairing": ""
+  }
+]
