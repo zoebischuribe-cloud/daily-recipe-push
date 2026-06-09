@@ -714,4 +714,4 @@ python "D:/Softwares/每次菜谱/daily_runner.py"
 
 ---
 
-文档已写入 Nutstore:C:\Users\Admin\Nutstore\1\SunnyWiki\raw\inbox\20260517\Daily_Recipe_Push_spec_Feishu-MiniMax-Bilibili-SOP_v1.0_spec.md
+文档已写入 documents:C:\Users\Admin\documents\1\SunnyWiki\raw\inbox\20260517\Daily_Recipe_Push_spec_Feishu-MiniMax-Bilibili-SOP_v1.0_spec.md
